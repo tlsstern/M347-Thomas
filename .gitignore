@@ -1,0 +1,6 @@
+/.gemini
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+temp_m347_clone/

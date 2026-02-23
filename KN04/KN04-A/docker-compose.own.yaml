@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    image: lava67/m347:kn02b-web
+    container_name: m347-kn04a-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      kn04-own-network:
+
+
+  db:
+    image: mariadb:latest
+    container_name: m347-kn04a-db
+    environment:
+      MYSQL_ROOT_PASSWORD: secretroot
+      MYSQL_DATABASE: kn02
+    networks:
+      kn04-own-network:
+
+
+networks:
+  kn04-own-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          ip_range: 172.20.5.0/24
+          gateway: 172.20.5.254

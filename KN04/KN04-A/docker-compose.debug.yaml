@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: m347-kn04a-web-debug
+    ports:
+      - "8082:80"
+    depends_on:
+      - db
+    networks:
+      kn04-network-debug:
+
+
+  db:
+    image: mariadb:latest
+    container_name: m347-kn04a-db-debug
+    environment:
+      MYSQL_ROOT_PASSWORD: secretroot
+      MYSQL_DATABASE: kn02
+    networks:
+      kn04-network-debug:
+
+
+networks:
+  kn04-network-debug:
+    driver: bridge

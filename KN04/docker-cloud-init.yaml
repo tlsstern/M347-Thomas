@@ -8,7 +8,6 @@ users:
     shell: /bin/bash
     ssh_authorized_keys:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUBo+qnNu5xxM9vfz4C04M36FHxHNrEMdm5TkFj1/SfVtqunlUOeMpu7nFCZZKnX8HYwf/MkjcBiTYAgncxku8grwl6XuW/pcvmb6/ghSIaw4xtRRSzit7omqJ5d8kXB3+Nd1aaMHsjfly4nkaqswhySVXQqr8Hw6DbWVw8jLLVKEE+5NZHY33hJkhJwK4blCllsGpmQaKi1qxjsN0hZOWNK01iJAydwD8t2xJ0NOYbq8Qas5IyPnRN7SPxvEhIP6WLQ6Ym6Dmf8FwNW1cHLTKabgjzt5f/HKUkKS89dPd3fn4nnFli1BOMECGUIvVlOw2pQNri7+04OOfn2FGlqr5 teacher
-      - # fügen Sie Ihren Schlüssel hinzu!
 ssh_pwauth: false
 disable_root: false
 package_update: true
@@ -26,7 +25,80 @@ packages:
   - lsb-release
   - unattended-upgrades
 final_message: "The system is finally up, after $UPTIME seconds"
-write_files: # Erweitern Sie diesen Teil
+write_files:
+  - path: /home/ubuntu/app/docker-compose.yaml
+    content: |
+      version: '3.8'
+
+      services:
+        web:
+          build: .
+          container_name: m347-kn04a-web
+          ports:
+            - "80:80"
+          depends_on:
+            - db
+          networks:
+            kn04-network:
+
+        db:
+          image: mariadb:latest
+          container_name: m347-kn04a-db
+          environment:
+            MYSQL_ROOT_PASSWORD: secretroot
+            MYSQL_DATABASE: kn02
+          networks:
+            kn04-network:
+
+      networks:
+        kn04-network:
+          driver: bridge
+          ipam:
+            config:
+              - subnet: 172.10.0.0/16
+                ip_range: 172.10.5.0/24
+                gateway: 172.10.5.254
+
+  - path: /home/ubuntu/app/Dockerfile
+    content: |
+      FROM php:8.0-apache
+
+      RUN docker-php-ext-install mysqli
+
+      COPY info.php /var/www/html/
+      COPY db.php /var/www/html/
+
+      EXPOSE 80
+
+  - path: /home/ubuntu/app/info.php
+    content: |
+      <?php
+      phpinfo();
+      ?>
+
+  - path: /home/ubuntu/app/db.php
+    content: |
+      <?php
+              //database
+              $servername = "m347-kn04a-db";
+              $username = "root";
+              $password = "secretroot";
+              $dbname = "kn02";
+
+              // Create connection
+              $conn = new mysqli($servername, $username, $password, $dbname);
+              // Check connection
+              if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+              }
+
+              $sql = "select Host, User from mysql.user;";
+              $result = $conn->query($sql);
+              while($row = $result->fetch_assoc()){
+                      echo($row["Host"] . " / " . $row["User"] . "<br />");
+              }
+      ?>
+
 runcmd:
   - mkdir -p /etc/apt/keyrings
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -35,5 +107,5 @@ runcmd:
   - apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
   - systemctl enable docker
   - systemctl start docker
-  # Erwetiern Sie hier die Befehle!
-
+  - chown -R ubuntu:ubuntu /home/ubuntu/app
+  - cd /home/ubuntu/app && docker compose up -d --build

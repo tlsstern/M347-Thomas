@@ -42,7 +42,7 @@ Wir laden das Image und starten den Container manuell:
 
 **5.1 `docker run -d ubuntu`**
 Der Befehl `docker run -d ubuntu` startet einen Container im Hintergrund. 
-- **Das Problem**: Da das Ubuntu-Image standardmäßig keinen langlaufenden Prozess (wie einen Webserver) startet, beendet sich der Container sofort nach dem Start wieder. Er führt nur kurz "nichts" aus und stoppt dann mit Exit Code 0.
+- **Das Problem**: Da das Ubuntu-Image standardmässig keinen langlaufenden Prozess (wie einen Webserver) startet, beendet sich der Container sofort nach dem Start wieder. Er führt nur kurz "nichts" aus und stoppt dann mit Exit Code 0.
 - Das Image wurde (falls nicht vorhanden) automatisch heruntergeladen.
 - Der Container konnte technisch starten, hat aber keine Aufgabe und beendet sich daher sofort.
 

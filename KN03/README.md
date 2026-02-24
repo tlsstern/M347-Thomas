@@ -37,7 +37,7 @@ Screenshots der `docker network inspect` Befehle:
 Wir testen die Verbindung zwischen den Containern mittels Ping.
 
 **Erwartung:**
-- Im **default bridge** Netzwerk (`busybox1`, `busybox2`) funktioniert die Namensauflösung (DNS) **nicht** standardmäßig. Ein Ping auf den Namen `busybox2` schlägt fehl ("bad address"). Ein Ping auf die IP-Adresse (`172.17.0.6`) sollte jedoch funktionieren.
+- Im **default bridge** Netzwerk (`busybox1`, `busybox2`) funktioniert die Namensauflösung (DNS) **nicht** standardmässig. Ein Ping auf den Namen `busybox2` schlägt fehl ("bad address"). Ein Ping auf die IP-Adresse (`172.17.0.6`) sollte jedoch funktionieren.
 - Im **user-defined** Netzwerk `tbz` (`busybox3`, `busybox4`) funktioniert die Namensauflösung automatisch. `busybox3` kann `busybox4` anpingen.
 - Container in unterschiedlichen Netzwerken (`busybox1` <-> `busybox3`) können sich weder per Name noch per IP erreichen.
 

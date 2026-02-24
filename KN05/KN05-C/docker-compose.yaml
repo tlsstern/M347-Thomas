@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  nginx1:
+    image: nginx:latest
+    container_name: m347-kn05c-1
+    volumes:
+      # Named volume (Long syntax)
+      - type: volume
+        source: kn05_shared_vol
+        target: /shared_named
+        volume:
+          nocopy: true
+      # Bind mount
+      - type: bind
+        source: ./html
+        target: /usr/share/nginx/html
+      # tmpfs mount
+      - type: tmpfs
+        target: /var/cache/nginx
+
+  nginx2:
+    image: nginx:latest
+    container_name: m347-kn05c-2
+    volumes:
+      # Named volume (Short syntax)
+      - kn05_shared_vol:/shared_named
+
+volumes:
+  # The named volume definition
+  kn05_shared_vol:

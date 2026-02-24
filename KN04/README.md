@@ -64,5 +64,9 @@ Für die Ausführung auf Windows mit Docker Desktop sind folgende Punkte zu beac
 #### Cloud-Init Datei
 - [docker-cloud-init.yaml](docker-cloud-init.yaml)
 
-> [!NOTE]
-> Die Screenshots für die Cloud-Umgebung folgen, sobald die Instanz erfolgreich deployed wurde.
+#### Screenshots der Cloud-Instanz
+**info.php (Cloud):**
+![info.php Cloud](images/B/info_php_cloud.png)
+
+**db.php (Cloud):**
+![db.php Cloud](images/B/db_php_cloud.png)

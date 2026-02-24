@@ -15,12 +15,10 @@ Dabei habe ich das Arbeitsverzeichnis auf `/usr/share/nginx/html` gesetzt und di
 ### Befehle
 - Build: `docker build -t kn02a .`
 - Run: `docker run -d -p 8080:80 --name kn02a kn02a`
-- Tag: `docker tag kn02a lava67/m347:kn02a`
-- Push: `docker push lava67/m347:kn02a`
 
 ### Screenshots
 
-**Docker Desktop (Image kn02a):**
+**Docker Desktop (Images tab showing kn02a):**
 ![Docker Desktop kn02a](images/docker_desktop_kn02a.png)
 
 **Browser (helloworld.html):**
@@ -41,14 +39,10 @@ Die Verbindung zwischen den Containern habe ich über den `--link` Parameter her
 - Build: `docker build -f Dockerfile.db -t kn02b-db .`
 - Run: `docker run -d -p 3306:3306 --name kn02b-db kn02b-db`
 - Test (PowerShell): `Test-NetConnection -ComputerName localhost -Port 3306`
-- Tag: `docker tag kn02b-db lava67/m347:kn02b-db`
-- Push: `docker push lava67/m347:kn02b-db`
 
 ### Befehle (Webserver)
 - Build: `docker build -f Dockerfile.web -t kn02b-web .`
 - Run: `docker run -d -p 8081:80 --name kn02b-web --link kn02b-db:kn02b-db kn02b-web`
-- Tag: `docker tag kn02b-web lava67/m347:kn02b-web`
-- Push: `docker push lava67/m347:kn02b-web`
 
 ### Screenshots
 

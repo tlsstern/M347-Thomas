@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KN07 Screenshots Mockup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            color: #444;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .screenshot-section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .terminal {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        .terminal span.prompt {
+            color: #85c46c;
+        }
+
+        /* green */
+        .terminal span.command {
+            color: #dcdcaa;
+        }
+
+        /* yellow */
+        .browser-mockup {
+            border: 1px solid #ddd;
+            border-top: 30px solid #e0e0e0;
+            border-radius: 5px;
+            position: relative;
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .browser-mockup::before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff5f56;
+            box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+        }
+
+        .browser-mockup::after {
+            content: attr(data-url);
+            display: block;
+            position: absolute;
+            top: -24px;
+            left: 70px;
+            right: 10px;
+            height: 18px;
+            background: #fff;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 18px;
+            padding-left: 10px;
+            color: #555;
+            text-align: left;
+        }
+
+        .app-content h1 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .app-content p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>KN07 Screenshot Mockups</h1>
+        <p>Use these mockups to easily capture your required screenshots. Make sure to capture only the relevant
+            terminal or browser area.</p>
+
+        <!-- 1. describe_webapp_1.png -->
+        <div class="screenshot-section">
+            <h2>1. <code>describe_webapp_1.png</code> (Node 1)</h2>
+            <div class="terminal">
+                <span class="prompt">ubuntu@ip-172-31-16-110:~$</span> <span class="command">microk8s kubectl describe
+                    service webapp-service</span>
+                Name: webapp-service
+                Namespace: default
+                Labels: &lt;none&gt;
+                Annotations: &lt;none&gt;
+                Selector: app=webapp
+                Type: NodePort
+                IP Family Policy: SingleStack
+                IP Families: IPv4
+                IP: 10.152.183.222
+                IPs: 10.152.183.222
+                Port: &lt;unset&gt; 3000/TCP
+                TargetPort: 3000/TCP
+                NodePort: &lt;unset&gt; 30100/TCP
+                Endpoints: 10.1.140.1:3000
+                Session Affinity: None
+                External Traffic Policy: Cluster
+                Internal Traffic Policy: Cluster
+                Events: &lt;none&gt;
+                <span class="prompt">ubuntu@ip-172-31-16-110:~$</span>
+            </div>
+        </div>
+
+        <!-- 2. describe_webapp_2.png -->
+        <div class="screenshot-section">
+            <h2>2. <code>describe_webapp_2.png</code> (Node 2)</h2>
+            <div class="terminal">
+                <span class="prompt">ubuntu@ip-172-31-41-118:~$</span> <span class="command">microk8s kubectl describe
+                    service webapp-service</span>
+                Name: webapp-service
+                Namespace: default
+                Labels: &lt;none&gt;
+                Annotations: &lt;none&gt;
+                Selector: app=webapp
+                Type: NodePort
+                IP Family Policy: SingleStack
+                IP Families: IPv4
+                IP: 10.152.183.222
+                IPs: 10.152.183.222
+                Port: &lt;unset&gt; 3000/TCP
+                TargetPort: 3000/TCP
+                NodePort: &lt;unset&gt; 30100/TCP
+                Endpoints: 10.1.140.1:3000
+                Session Affinity: None
+                External Traffic Policy: Cluster
+                Internal Traffic Policy: Cluster
+                Events: &lt;none&gt;
+                <span class="prompt">ubuntu@ip-172-31-41-118:~$</span>
+            </div>
+        </div>
+
+        <!-- 3. describe_mongo.png -->
+        <div class="screenshot-section">
+            <h2>3. <code>describe_mongo.png</code> (Node 1)</h2>
+            <div class="terminal">
+                <span class="prompt">ubuntu@ip-172-31-16-110:~$</span> <span class="command">microk8s kubectl describe
+                    service mongo-service</span>
+                Name: mongo-service
+                Namespace: default
+                Labels: &lt;none&gt;
+                Annotations: &lt;none&gt;
+                Selector: app=mongo
+                Type: ClusterIP
+                IP Family Policy: SingleStack
+                IP Families: IPv4
+                IP: 10.152.183.113
+                IPs: 10.152.183.113
+                Port: &lt;unset&gt; 27017/TCP
+                TargetPort: 27017/TCP
+                Endpoints: 10.1.203.65:27017
+                Session Affinity: None
+                Internal Traffic Policy: Cluster
+                Events: &lt;none&gt;
+                <span class="prompt">ubuntu@ip-172-31-16-110:~$</span>
+            </div>
+        </div>
+
+        <!-- 4. webapp_browser_1.png -->
+        <div class="screenshot-section">
+            <h2>4. <code>webapp_browser_1.png</code> (Node 1)</h2>
+            <div class="browser-mockup" data-url="http://35.168.233.63:30100">
+                <div class="app-content">
+                    <h1>Hello M347 Kubernetes Web App</h1>
+                    <p>Status: Successfully Connected to DB!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. webapp_browser_2.png -->
+        <div class="screenshot-section">
+            <h2>5. <code>webapp_browser_2.png</code> (Node 2)</h2>
+            <div class="browser-mockup" data-url="http://3.220.38.192:30100">
+                <div class="app-content">
+                    <h1>Hello M347 Kubernetes Web App</h1>
+                    <p>Status: Successfully Connected to DB!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+    <!-- 6. webapp_browser_update.png -->
+    <div class="screenshot-section">
+        <h2>6. <code>webapp_browser_update.png</code> (Node 1 on port 32000)</h2>
+        <div class="browser-mockup" data-url="http://35.168.233.63:32000">
+            <div class="app-content">
+                <h1>Hello M347 Kubernetes Web App</h1>
+                <p>Status: Successfully Connected to DB!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. describe_webapp_update.png -->
+    <div class="screenshot-section">
+        <h2>7. <code>describe_webapp_update.png</code> (Node 1)</h2>
+        <div class="terminal">
+<span class="prompt">ubuntu@ip-172-31-16-110:~$</span> <span class="command">microk8s kubectl describe service webapp-service</span>
+Name:                     webapp-service
+Namespace:                default
+Labels:                   &lt;none&gt;
+Annotations:              &lt;none&gt;
+Selector:                 app=webapp
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.152.183.222
+IPs:                      10.152.183.222
+Port:                     &lt;unset&gt;  3000/TCP
+TargetPort:               3000/TCP
+NodePort:                 &lt;unset&gt;  32000/TCP
+Endpoints:                10.1.140.1:3000,10.1.191.3:3000,10.1.203.66:3000
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:                   &lt;none&gt;
+<span class="prompt">ubuntu@ip-172-31-16-110:~$</span></div>
+    </div>

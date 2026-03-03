@@ -12,10 +12,10 @@ In diesem Teil wurde eine `docker-compose.yaml` Datei erstellt, die eine MariaDB
 
 #### Screenshots
 **info.php (Lokaler Webserver mit IPs):**
-![info.php](images/php.png)
+![info.php](images/A/php.png)
 
 **db.php (Verbindung zur Datenbank):**
-![db.php](images/db-php.png)
+![db.php](images/A/db-php.png)
 
 #### Docker Compose Up Befehle
 Der Befehl `docker compose up` ist eine Kombination aus mehreren Docker-Befehlen, die nacheinander ausgeführt werden, um die Umgebung zu starten. Er führt folgende Befehle (oder deren Funktionalität) aus:
@@ -35,10 +35,10 @@ In diesem Teil wurden die bereits publizierten Images verwendet. Der IP-Bereich 
 
 #### Screenshots
 **info.php (Eigene Images, neuer IP-Range):**
-![info.php own](images/php_own.png)
+![info.php own](images/A/php_own.png)
 
 **db.php (Fehlermeldung):**
-![db.php error](images/db-php_own.png)
+![db.php error](images/A/db-php_own.png)
 
 #### Erklärung des Fehlers
 Der Fehler `php_network_getaddresses: getaddrinfo failed` tritt auf, weil der im PHP-Script `db.php` hinterlegte Hostname (`m347-kn04a-db`) nicht aufgelöst werden kann.

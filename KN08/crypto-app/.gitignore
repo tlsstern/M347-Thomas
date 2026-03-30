@@ -18,7 +18,7 @@ dist/
 # Env & Secrets
 *.env
 appsettings.json
-k8s/secret.yaml
+
 
 # Docker
 *.tar

@@ -15,7 +15,7 @@ kind: Service
 metadata:
   name: account
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: account
   ports:
@@ -29,7 +29,7 @@ kind: Service
 metadata:
   name: buysell
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: buysell
   ports:
@@ -43,7 +43,7 @@ kind: Service
 metadata:
   name: sendreceive
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: sendreceive
   ports:
@@ -57,7 +57,7 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: frontend
   ports:

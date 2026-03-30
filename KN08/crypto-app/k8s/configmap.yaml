@@ -8,6 +8,7 @@ data:
   REACT_APP_BUYSELL_BUY: "/buy"
   REACT_APP_BUYSELL_SELL: "/sell"
   REACT_APP_SENDRECEIVE_SEND: "/send"
+  REACT_APP_USER_LOGGED_IN: "1"
   ACCOUNT_URL: "http://account:8080"
 
 ---

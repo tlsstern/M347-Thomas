@@ -9,7 +9,7 @@ function App() {
   //console.log(process);
   //console.log(process.env);
 
-  localStorage.setItem("userid", process.env.REACT_APP_USER_LOGGED_IN);
+  localStorage.setItem("userid", window._env_.REACT_APP_USER_LOGGED_IN);
 
   
   return (

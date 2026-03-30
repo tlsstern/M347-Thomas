@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  selector:
+    app: db
+  ports:
+  - port: 3306
+    targetPort: 3306
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: account
+spec:
+  type: LoadBalancer
+  selector:
+    app: account
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: buysell
+spec:
+  type: LoadBalancer
+  selector:
+    app: buysell
+  ports:
+  - port: 3001
+    targetPort: 3001
+    nodePort: 30001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sendreceive
+spec:
+  type: LoadBalancer
+  selector:
+    app: sendreceive
+  ports:
+  - port: 3002
+    targetPort: 3002
+    nodePort: 30002
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000

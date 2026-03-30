@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: m347kn08
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/m347_KN08_DB.sql:/docker-entrypoint-initdb.d/init.sql
+
+  account:
+    build: ./account
+    ports:
+      - "8080:8080"
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=db;Database=m347kn08;User=root;Password=password;"
+    depends_on:
+      - db

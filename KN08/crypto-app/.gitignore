@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+bin/
+obj/
+*.exe
+*.dll
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build Artifacts
+frontend/app/build/
+dist/
+
+# Env & Secrets
+*.env
+appsettings.json
+k8s/secret.yaml
+
+# Docker
+*.tar
+build.bat
+C:\Projects\M347-Thomas\KN08\crypto-app\build.bat
+C:\Projects\M347-Thomas\KN08\crypto-app\build.bat.bak
+node_modules.zip
+C:\Projects\M347-Thomas\KN08\crypto-app\crypto-app.zip

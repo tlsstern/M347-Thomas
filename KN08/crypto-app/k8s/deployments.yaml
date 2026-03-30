@@ -1,0 +1,155 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASSWORD
+        - name: MYSQL_DATABASE
+          value: m347kn08
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: init-sql
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: init-sql
+        configMap:
+          name: db-init-sql
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: account
+  template:
+    metadata:
+      labels:
+        app: account
+    spec:
+      containers:
+      - name: account
+        image: account:local
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: ConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: ACCOUNT_DB_CONNECTION
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: ACCOUNT_DB_CONNECTION
+        - name: ACCOUNT_DB_CONNECTION
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: ACCOUNT_DB_CONNECTION
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buysell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buysell
+  template:
+    metadata:
+      labels:
+        app: buysell
+    spec:
+      containers:
+      - name: buysell
+        image: buysell:local
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: app-config
+        ports:
+        - containerPort: 3001
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sendreceive
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sendreceive
+  template:
+    metadata:
+      labels:
+        app: sendreceive
+    spec:
+      containers:
+      - name: sendreceive
+        image: sendreceive:local
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: app-config
+        ports:
+        - containerPort: 3002
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: frontend:v3
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: app-config
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx-config

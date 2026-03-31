@@ -44,8 +44,8 @@ function Crypto() {
       <span className='crypto-name'> tbzCoin</span>
       <div className='crypto-buysell'>
         <div className="form-group">
-          <label htmlFor="amount">Amount: </label>
-          <input type="number" id="amount" name="amount" className="form-control size-small" value={amount} onChange={(event) => setAmount(event.target.value)}/>
+          <label htmlFor="crypto-amount">Amount: </label>
+          <input type="number" id="crypto-amount" name="amount" className="form-control size-small" value={amount} onChange={(event) => setAmount(event.target.value)}/>
         </div>
         <div className="form-group">
           <label htmlFor="nothing"></label>

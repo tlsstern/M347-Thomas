@@ -42,8 +42,8 @@ function Friends() {
         <input type="text" id="friendid" name="friendid" className="form-control size-medium" readOnly disabled value={friendid} />
       </div>
       <div className="form-group">
-        <label htmlFor="amount">Amount: </label>
-        <input type="number" id="amount" name="amount" className="form-control size-small" value={amount} onChange={(event) => setAmount(event.target.value)} />
+        <label htmlFor="send-amount">Amount: </label>
+        <input type="number" id="send-amount" name="amount" className="form-control size-small" value={amount} onChange={(event) => setAmount(event.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="nothing"></label>

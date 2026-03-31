@@ -31,12 +31,17 @@ Der gleiche Befehl auf Node 2 zeigt dasselbe Ergebnis — alle drei Nodes sind s
 
 ---
 
-### `microk8s status` — Vor dem Entfernen
+### `microk8s status` — Analyse der High Availability (HA)
 
-Als alle drei Nodes als Master-Nodes im Cluster waren, zeigte `microk8s status`:
-- **high-availability: yes** — Der Cluster war hochverfügbar, da mindestens 3 Master-Nodes vorhanden waren.
-- **datastore master nodes**: Alle drei IPs waren als "master" (Voter) aufgelistet.
-- Das bedeutet: Jeder Node hat eine Kopie der Datenbank (Dqlite) und stimmt bei Änderungen ab. Fällt ein Node aus, können die anderen beiden den Cluster weiterführen.
+Dieser Screenshot zeigt den initialen Zustand des Clusters mit drei voll funktionsfähigen Nodes:
+
+![Status Initial HA Yes](images/B_status_initial.png)
+
+**Bedeutung der Anzeige:**
+
+- **high-availability: yes**: Dies signalisiert, dass der Cluster den HA-Status erreicht hat. Gemäss der Dokumentation (Kapitel *High Availability*) schaltet MicroK8s automatisch in diesen Modus, sobald mindestens drei Nodes dem Cluster beitreten.
+- **datastore master nodes**: Hier werden die Nodes aufgelistet, die aktiv an der **Dqlite** (Distributed SQLite) Datenbank teilnehmen. In einem 3-Node-Cluster fungieren alle drei Nodes als "Voter" und halten eine replizierte Kopie des Cluster-Zustands.
+- **Funktionsweise**: Durch die drei Master-Nodes ist der Cluster redundant. Da für Entscheidungen ein Quorum (Mehrheit) benötigt wird, bleibt der Cluster selbst beim Ausfall eines beliebigen Nodes voll funktionsfähig.
 
 ---
 

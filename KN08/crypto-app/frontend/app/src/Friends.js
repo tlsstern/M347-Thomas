@@ -16,7 +16,6 @@ function Friends() {
     });
   }, []);
 
-  const onClick = ({ target }) => setFriendId(target.id); //console.log(target); //setFriendId("hallo");
   const onClickSend = () => {
     sendreceive.send(friendid, localStorage.getItem("userid"), amount)
       .then(data => {
@@ -33,7 +32,7 @@ function Friends() {
         {friends.map(item => (
             <div key={item.id}>
               <span>{item.name}</span>
-              <span className='link' id={item.id} onClick={onClick}>Send Crypto</span>
+              <span className='link' onClick={() => setFriendId(item.id)}>Send Crypto</span>
             </div>
           ))}
       </div>

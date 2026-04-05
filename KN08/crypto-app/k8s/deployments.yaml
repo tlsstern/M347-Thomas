@@ -138,7 +138,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: localhost:32000/frontend:v4
+        image: localhost:32000/frontend:v5
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:

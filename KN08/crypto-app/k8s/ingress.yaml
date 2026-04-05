@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   annotations:
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: public
 spec:
   rules:
   - http:

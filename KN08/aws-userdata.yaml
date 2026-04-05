@@ -1,0 +1,10 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+runcmd:
+  - snap install microk8s --classic
+  - usermod -a -G microk8s ubuntu
+  - mkdir -p /home/ubuntu/.kube
+  - chown -R ubuntu:ubuntu /home/ubuntu/.kube
+  - echo "alias kubectl='microk8s kubectl'" >> /home/ubuntu/.bashrc

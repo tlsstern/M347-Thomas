@@ -58,8 +58,7 @@ metadata:
     service.beta.kubernetes.io/network-load-balancer-address-type: internet-facing
 spec:
   type: LoadBalancer
-  externalIPs:
-  - 54.175.15.144
+
   selector:
     app: frontend
   ports:

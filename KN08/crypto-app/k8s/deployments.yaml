@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
       - name: account
-        image: account:local
+        image: localhost:32000/account:local
         imagePullPolicy: IfNotPresent
         env:
         - name: ConnectionString
@@ -88,7 +88,7 @@ spec:
     spec:
       containers:
       - name: buysell
-        image: buysell:local
+        image: localhost:32000/buysell:local
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -113,7 +113,7 @@ spec:
     spec:
       containers:
       - name: sendreceive
-        image: sendreceive:local
+        image: localhost:32000/sendreceive:local
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -138,7 +138,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: frontend:v4
+        image: localhost:32000/frontend:v4
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
